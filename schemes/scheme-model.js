@@ -18,7 +18,13 @@ function findById(id) {
 }
 
 function findSteps(id) {
-  
+  return db('schemes')
+    .join('steps', function() {
+      this
+        .on('steps.scheme_id', '=', 'schemes.id')
+    })
+    .select('schemes.id', 'schemes.scheme_name', 'steps.step_number', 'steps.instructions')
+    .where('steps.scheme_id', id);
 }
 
 function add(scheme) {
