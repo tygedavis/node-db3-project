@@ -37,8 +37,6 @@ function add(scheme) {
 }
 
 function addStep(step, scheme_id) {
-  console.log(step)
-  console.log(scheme_id)
   return db('steps').insert(step).where( scheme_id );
 }
 
